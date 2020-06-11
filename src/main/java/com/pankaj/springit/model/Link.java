@@ -7,7 +7,10 @@ import lombok.NonNull;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.util.Objects;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Entity
 @NoArgsConstructor
@@ -21,6 +24,7 @@ public class Link {
     private String title;
     @NonNull
     private String url;
-    // comments
+    @OneToMany(mappedBy = "link")
+    private List<Comment> comments = new ArrayList<>();
 
 }
