@@ -5,6 +5,7 @@ import com.pankaj.springit.model.Comment;
 import com.pankaj.springit.model.Link;
 import com.pankaj.springit.repository.CommentRepository;
 import com.pankaj.springit.repository.LinkRepository;
+import org.ocpsoft.prettytime.PrettyTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -40,5 +41,10 @@ public class SpringitApplication {
             System.out.println("We just inserted a link and a comment");
             System.out.println("===========================================================");
         };
+    }
+
+    @Bean
+    PrettyTime prettyTime() {
+        return new PrettyTime();
     }
 }
