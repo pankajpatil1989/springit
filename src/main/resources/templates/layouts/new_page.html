@@ -3,10 +3,13 @@
 <head th:replace="~{layouts/main_layout :: head(title = 'Springit - Spring Boot Reddit Clone')}">
 </head>
 <body>
-<nav th:replace="~{layouts/main_layout :: nav}"></nav>
-<div th:replace="~{layouts/main_layout :: jumbotron}"></div>
-<div th:replace="~{layouts/main_layout :: content}">
-    <h1>This is my content</h1>
-</div>
+
+    <nav th:replace="~{layouts/main_layout :: nav}"></nav>
+    <div th:replace="~{layouts/main_layout :: jumbotron}"></div>
+
+    <div class="container">
+        content goes here...
+    </div>
+
 </body>
 </html>
