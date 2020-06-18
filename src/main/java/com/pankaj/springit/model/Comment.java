@@ -1,11 +1,16 @@
 package com.pankaj.springit.model;
 
+import com.pankaj.springit.service.BeanUtil;
 import lombok.*;
+import org.ocpsoft.prettytime.PrettyTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
 
 
 @Entity
@@ -13,7 +18,6 @@ import javax.persistence.ManyToOne;
 @RequiredArgsConstructor
 @Getter
 @Setter
-@ToString
 public class Comment extends Auditable {
 
     @Id
@@ -25,5 +29,14 @@ public class Comment extends Auditable {
     @ManyToOne
     @NonNull
     private Link link;
+
+    public String getPrettyTime() {
+        PrettyTime pt = BeanUtil.getBean(PrettyTime.class);
+        return pt.format(convertToDateViaInstant(getCreationDate()));
+    }
+
+    private Date convertToDateViaInstant(LocalDateTime dateToConvert) {
+        return java.util.Date.from(dateToConvert.atZone(ZoneId.systemDefault()).toInstant());
+    }
 
 }
